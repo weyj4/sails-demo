@@ -38,5 +38,18 @@ module.exports = {
     //   delete obj._csrf;
     //   return obj;
     // }
+
+  },
+
+  beforeCreate: function (values, next) {
+    if (!values.password || values.password != values.verify) {
+      return next({err: ["Password doesn't match password confirmation"]});
+    }
+
+    require('bcrypt').hash(values.password, 10, function passwordEncrypted(err, encryptedPassword) {
+      if (err) return next(err);
+      values.encryptedPassword = encryptedPassword;
+      next();
+    });
   }
 };

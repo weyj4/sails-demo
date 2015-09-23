@@ -33,5 +33,9 @@
     "url": "git://github.com/weylandjoyner/testProject.git"
   },
   "author": "weylandjoyner",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "bcrypt": "^0.8.5",
+    "sails-mongo": "^0.11.4"
+  }
 }
